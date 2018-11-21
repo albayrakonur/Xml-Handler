@@ -1,2 +1,2 @@
 hello world
-https://travis-ci.org/albayrakonur/Xml-Handler.svg?branch=master
+[![Build Status](https://travis-ci.org/albayrakonur/myDemoApp.svg?branch=master)](https://travis-ci.org/albayrakonur/myDemoApp)
