@@ -39,10 +39,10 @@ public class App {
                     Element eElement = (Element) nNode;
                     if(eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent().equals(name)
                         || eElement.getElementsByTagName("LASTNAME").item(0).getTextContent().equals(surname)) {
-                            result += eElement.getAttribute("Id") + "\n";
-                            result += eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent() + "\n";
-                            result += eElement.getElementsByTagName("LASTNAME").item(0).getTextContent() + "\n";
-                            result += "####################\n";
+                            result += eElement.getAttribute("Id") + "<br />";
+                            result += eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent() + "<br />";
+                            result += eElement.getElementsByTagName("LASTNAME").item(0).getTextContent() + "<br />";
+                            result += "####################<br />";
                     }
                 }
             }
