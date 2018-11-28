@@ -93,9 +93,9 @@ public class App {
             System.out.println(input2);
 
             String result = App.search(input1,input2);
-
+            String[] resultArray = result.split("|||");
             Map map = new HashMap();
-            map.put("result", result);
+            map.put("result", resultArray);
             return new ModelAndView(map, "compute.mustache");
         }, new MustacheTemplateEngine());
 
