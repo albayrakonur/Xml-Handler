@@ -23,10 +23,10 @@ public class App {
         System.out.println("inside search");
         String result = "";
         if(name == null) {
-            name = "";
+            name = "##########";
         }
         if(surname == null) {
-            surname = "";
+            surname = "##########";
         }
         try {
             File inputFile = new File("EEAS.xml");
@@ -40,7 +40,6 @@ public class App {
             for (int temp = 0; temp < nList.getLength(); temp++) {
                 Node nNode = nList.item(temp);
                 System.out.println("\nCurrent Element :" + nNode.getNodeName());
-               
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) nNode;
                     if(eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent().equals(name)
