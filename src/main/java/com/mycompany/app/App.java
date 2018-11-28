@@ -32,34 +32,30 @@ public class App {
             NodeList nList = doc.getElementsByTagName("NAME");
             System.out.println("----------------------------");
             for (int temp = 0; temp < nList.getLength(); temp++) {
-               Node nNode = nList.item(temp);
-               System.out.println("\nCurrent Element :" + nNode.getNodeName());
+                Node nNode = nList.item(temp);
+                System.out.println("\nCurrent Element :" + nNode.getNodeName());
                
-               if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) nNode;
-                    result.add(eElement.getAttribute("Id"));
-                    result.add(eElement
-                    .getElementsByTagName("FIRSTNAME")
-                    .item(0)
-                    .getTextContent());
-                    result.add(eElement
-                    .getElementsByTagName("LASTNAME")
-                    .item(0)
-                    .getTextContent());
-
-                    System.out.println("Entity ID: " 
-                     + eElement.getAttribute("Id"));
-                    System.out.println("First Name : " 
-                     + eElement
-                     .getElementsByTagName("FIRSTNAME")
-                     .item(0)
-                     .getTextContent());
-                    System.out.println("Last Name : " 
-                     + eElement
-                     .getElementsByTagName("LASTNAME")
-                     .item(0)
-                     .getTextContent());
-               }
+                    if(eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent().equals(name)
+                        || eElement.getElementsByTagName("LASTNAME").item(0).getTextContent().equals(surname)) {
+                            result.add(eElement.getAttribute("Id"));
+                            result.add(eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent());
+                            result.add(eElement.getElementsByTagName("LASTNAME").item(0).getTextContent());
+                            System.out.println("Entity ID: " 
+                            + eElement.getAttribute("Id"));
+                        System.out.println("First Name : " 
+                            + eElement
+                            .getElementsByTagName("FIRSTNAME")
+                            .item(0)
+                            .getTextContent());
+                        System.out.println("Last Name : " 
+                            + eElement
+                            .getElementsByTagName("LASTNAME")
+                            .item(0)
+                            .getTextContent());
+                    }
+                }
             }
          } catch (Exception e) {
             e.printStackTrace();
