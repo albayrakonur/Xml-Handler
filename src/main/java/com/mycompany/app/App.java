@@ -29,7 +29,7 @@ public class App {
             Document doc = dBuilder.parse(inputFile);
             doc.getDocumentElement().normalize();
             System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
-            NodeList nList = doc.getElementsByTagName("NAME");
+            NodeList nList = doc.getElementsByTagName("ENTITY");
             System.out.println("----------------------------");
             for (int temp = 0; temp < nList.getLength(); temp++) {
                 Node nNode = nList.item(temp);
@@ -42,18 +42,6 @@ public class App {
                             result.add(eElement.getAttribute("Id"));
                             result.add(eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent());
                             result.add(eElement.getElementsByTagName("LASTNAME").item(0).getTextContent());
-                            System.out.println("Entity ID: " 
-                            + eElement.getAttribute("Id"));
-                        System.out.println("First Name : " 
-                            + eElement
-                            .getElementsByTagName("FIRSTNAME")
-                            .item(0)
-                            .getTextContent());
-                        System.out.println("Last Name : " 
-                            + eElement
-                            .getElementsByTagName("LASTNAME")
-                            .item(0)
-                            .getTextContent());
                     }
                 }
             }
