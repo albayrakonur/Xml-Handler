@@ -28,7 +28,7 @@ public class App {
             Document doc = dBuilder.parse(inputFile);
             doc.getDocumentElement().normalize();
             System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
-            NodeList nList = doc.getElementsByTagName("ENTITY");
+            NodeList nList = doc.getElementsByTagName("NAME");
             System.out.println("----------------------------");
             
             for (int temp = 0; temp < nList.getLength(); temp++) {
