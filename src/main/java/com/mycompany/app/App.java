@@ -35,7 +35,7 @@ public class App {
             Document doc = dBuilder.parse(inputFile);
             doc.getDocumentElement().normalize();
             System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
-            NodeList nList = doc.getElementsByTagName("");
+            NodeList nList = doc.getElementsByTagName("ENTITY");
             System.out.println("----------------------------");
             for (int temp = 0; temp < nList.getLength(); temp++) {
                 Node nNode = nList.item(temp);
@@ -77,7 +77,7 @@ public class App {
             String result = App.search(input1,input2);
 
             Map map = new HashMap();
-            map.put("result", result);
+            map.put("result", result.toString());
             return new ModelAndView(map, "compute.mustache");
         }, new MustacheTemplateEngine());
 
