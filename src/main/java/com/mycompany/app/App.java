@@ -21,6 +21,7 @@ import spark.template.mustache.MustacheTemplateEngine;
 public class App {
     public static ArrayList<String> search(String name,String surname) {
         System.out.println("inside search");
+        ArrayList<String> result = new ArrayList<>();
         try {
             File inputFile = new File("EEAS.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -30,7 +31,6 @@ public class App {
             System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
             NodeList nList = doc.getElementsByTagName("NAME");
             System.out.println("----------------------------");
-            
             for (int temp = 0; temp < nList.getLength(); temp++) {
                Node nNode = nList.item(temp);
                System.out.println("\nCurrent Element :" + nNode.getNodeName());
@@ -47,21 +47,6 @@ public class App {
                     System.out.println("Last Name : " 
                      + eElement
                      .getElementsByTagName("LASTNAME")
-                     .item(0)
-                     .getTextContent());
-                    System.out.println("Middle Name : " 
-                     + eElement
-                     .getElementsByTagName("MIDDLENAME")
-                     .item(0)
-                     .getTextContent());
-                    System.out.println("Whole Name : " 
-                     + eElement
-                     .getElementsByTagName("WHOLENAME")
-                     .item(0)
-                     .getTextContent());   
-                    System.out.println("Gender : " 
-                     + eElement
-                     .getElementsByTagName("GENDER")
                      .item(0)
                      .getTextContent());
                }
