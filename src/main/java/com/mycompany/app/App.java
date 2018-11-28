@@ -19,9 +19,9 @@ import spark.ModelAndView;
 import spark.template.mustache.MustacheTemplateEngine;
 
 public class App {
-    public static ArrayList<String> search(String name,String surname) {
+    public static String search(String name,String surname) {
         System.out.println("inside search");
-        ArrayList<String> result = new ArrayList<>();
+        String result = "";
         try {
             File inputFile = new File("EEAS.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -39,9 +39,10 @@ public class App {
                     Element eElement = (Element) nNode;
                     if(eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent().equals(name)
                         || eElement.getElementsByTagName("LASTNAME").item(0).getTextContent().equals(surname)) {
-                            result.add(eElement.getAttribute("Id"));
-                            result.add(eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent());
-                            result.add(eElement.getElementsByTagName("LASTNAME").item(0).getTextContent());
+                            result += eElement.getAttribute("Id") + "\n";
+                            result += eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent() + "\n";
+                            result += eElement.getElementsByTagName("LASTNAME").item(0).getTextContent() + "\n";
+                            result += "####################\n";
                     }
                 }
             }
@@ -67,20 +68,10 @@ public class App {
             String input2 = req.queryParams("input2").replaceAll("\\s", "");
             System.out.println(input2);
 
-            ArrayList<String> result = App.search(input1,input2);
+            String result = App.search(input1,input2);
 
             Map map = new HashMap();
-            String sb = "";
-            int i = 0;
-            for(String s : result) {
-                if(i % 3 == 0) {
-                    sb += s;
-                }else {
-                    sb += "\n" + s;
-                }
-                i += 1;
-            }
-            map.put("result", result.toString());
+            map.put("result", result);
             return new ModelAndView(map, "compute.mustache");
         }, new MustacheTemplateEngine());
 
