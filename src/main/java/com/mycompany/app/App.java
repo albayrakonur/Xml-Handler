@@ -41,12 +41,12 @@ public class App {
             System.out.println(input1);
 
             String input2 = req.queryParams("input2").replaceAll("\\s", "");
-            System.out.println(input1);
+            System.out.println(input2);
 
             ArrayList<String> result = App.search(input1,input2);
 
             Map map = new HashMap();
-            map.put("result", result);
+            map.put("result", result.toString());
             return new ModelAndView(map, "compute.mustache");
         }, new MustacheTemplateEngine());
 
