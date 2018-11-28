@@ -43,14 +43,16 @@ public class App {
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) nNode;
                     if(name != null && surname != null) {
+                        System.out.println("11111111111");
                         if(eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent().equals(name)
-                        || eElement.getElementsByTagName("LASTNAME").item(0).getTextContent().equals(surname)) {
+                        && eElement.getElementsByTagName("LASTNAME").item(0).getTextContent().equals(surname)) {
                             result += eElement.getAttribute("Id") + "\n";
                             result += eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent() + "\n";
                             result += eElement.getElementsByTagName("LASTNAME").item(0).getTextContent() + "\n";
                             result += "####################\n";
                         }
                     }else if(name != null && surname == null) {
+                        System.out.println("2222222222");
                         if(eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent().equals(name)) {
                             result += eElement.getAttribute("Id") + "\n";
                             result += eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent() + "\n";
@@ -58,6 +60,7 @@ public class App {
                             result += "####################\n";
                     }
                     }else if(name == null && surname != null) {
+                        System.out.println("33333333333");
                         if(eElement.getElementsByTagName("LASTNAME").item(0).getTextContent().equals(surname)) {
                             result += eElement.getAttribute("Id") + "\n";
                             result += eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent() + "\n";
@@ -65,6 +68,7 @@ public class App {
                             result += "####################\n";
                         }
                     }else if(name == null && surname == null) {
+                        System.out.println("444444444444");
                         result = "You entered both textarea NULL";
                     }
                     
