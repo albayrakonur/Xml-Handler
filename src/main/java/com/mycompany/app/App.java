@@ -22,6 +22,12 @@ public class App {
     public static String search(String name,String surname) {
         System.out.println("inside search");
         String result = "";
+        if(name.equals("")) {
+            name = null;
+        }
+        if(surname.equals("")) {
+            surname = null;
+        }
         try {
             File inputFile = new File("EEAS.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
