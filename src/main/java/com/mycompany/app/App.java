@@ -7,7 +7,6 @@ import static spark.Spark.post;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 import java.io.File;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
@@ -37,27 +36,32 @@ public class App {
                System.out.println("\nCurrent Element :" + nNode.getNodeName());
                
                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-                  Element eElement = (Element) nNode;
-                  System.out.println("Student roll no : " 
-                     + eElement.getAttribute("rollno"));
-                  System.out.println("First Name : " 
+                    Element eElement = (Element) nNode;
+                    System.out.println("Entity ID: " 
+                     + eElement.getAttribute("Id"));
+                    System.out.println("First Name : " 
                      + eElement
-                     .getElementsByTagName("firstname")
+                     .getElementsByTagName("FIRSTNAME")
                      .item(0)
                      .getTextContent());
-                  System.out.println("Last Name : " 
+                    System.out.println("Last Name : " 
                      + eElement
-                     .getElementsByTagName("lastname")
+                     .getElementsByTagName("LASTNAME")
                      .item(0)
                      .getTextContent());
-                  System.out.println("Nick Name : " 
+                    System.out.println("Middle Name : " 
                      + eElement
-                     .getElementsByTagName("nickname")
+                     .getElementsByTagName("MIDDLENAME")
                      .item(0)
                      .getTextContent());
-                  System.out.println("Marks : " 
+                    System.out.println("Whole Name : " 
                      + eElement
-                     .getElementsByTagName("marks")
+                     .getElementsByTagName("WHOLENAME")
+                     .item(0)
+                     .getTextContent());   
+                    System.out.println("Gender : " 
+                     + eElement
+                     .getElementsByTagName("GENDER")
                      .item(0)
                      .getTextContent());
                }
