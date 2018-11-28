@@ -29,7 +29,7 @@ public class App {
             Document doc = dBuilder.parse(inputFile);
             doc.getDocumentElement().normalize();
             System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
-            NodeList nList = doc.getElementsByTagName("ENTITY");
+            NodeList nList = doc.getElementsByTagName("");
             System.out.println("----------------------------");
             for (int temp = 0; temp < nList.getLength(); temp++) {
                 Node nNode = nList.item(temp);
@@ -70,6 +70,16 @@ public class App {
             ArrayList<String> result = App.search(input1,input2);
 
             Map map = new HashMap();
+            String sb = "";
+            int i = 0;
+            for(String s : result) {
+                if(i % 3 == 0) {
+                    sb += s;
+                }else {
+                    sb += "\n" + s;
+                }
+                i += 1;
+            }
             map.put("result", result.toString());
             return new ModelAndView(map, "compute.mustache");
         }, new MustacheTemplateEngine());
