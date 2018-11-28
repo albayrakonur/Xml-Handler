@@ -29,7 +29,7 @@ public class App {
 
         get("/", (req, res) -> "Hello, World");
 
-        post("/search", (req, res) -> {
+        post("/compute", (req, res) -> {
             // System.out.println(req.queryParams("input1"));
             // System.out.println(req.queryParams("input2"));
 
@@ -53,7 +53,7 @@ public class App {
             return new ModelAndView(map, "compute.mustache");
         }, new MustacheTemplateEngine());
 
-        get("/search", (rq, rs) -> {
+        get("/compute", (rq, rs) -> {
             Map map = new HashMap();
             map.put("result", "not computed yet!");
             return new ModelAndView(map, "compute.mustache");
