@@ -48,21 +48,21 @@ public class App {
                             result += eElement.getAttribute("Id") + "\n";
                             result += eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent() + "\n";
                             result += eElement.getElementsByTagName("LASTNAME").item(0).getTextContent() + "\n";
-                            result += "<br/>\n<hr/>";
+                            result += "|||\n";
                         }
                     }else if(name != null && surname == null) {
                         if(eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent().equals(name)) {
                             result += eElement.getAttribute("Id") + "\n";
                             result += eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent() + "\n";
                             result += eElement.getElementsByTagName("LASTNAME").item(0).getTextContent() + "\n";
-                            result += "<br/>\n<hr/>";
+                            result += "|||\n";
                     }
                     }else if(name == null && surname != null) {
                         if(eElement.getElementsByTagName("LASTNAME").item(0).getTextContent().equals(surname)) {
                             result += eElement.getAttribute("Id") + "\n";
                             result += eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent() + "\n";
                             result += eElement.getElementsByTagName("LASTNAME").item(0).getTextContent() + "\n";
-                            result += "<br/>\n<hr/>";
+                            result += "|||\n";
                         }
                     }else if(name == null && surname == null) {
                         result = "You entered both textarea NULL";
