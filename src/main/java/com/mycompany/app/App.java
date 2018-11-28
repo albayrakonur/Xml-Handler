@@ -49,7 +49,7 @@ public class App {
             
             java.util.Scanner xmlreader = null;
             try {
-                xmlreader = new java.util.Scanner("EEAS.xml");
+                xmlreader = new java.util.Scanner("EEASs.xml");
             }catch (Exception e) {
                 System.out.println("File Cannot Read!");
             }
