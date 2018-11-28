@@ -5,6 +5,7 @@ import static spark.Spark.port;
 import static spark.Spark.post;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.io.File;
@@ -93,6 +94,8 @@ public class App {
             System.out.println(input2);
 
             String result = App.search(input1,input2);
+            String[] arr = result.split("------------------\n");
+            System.out.println(Arrays.toString(arr));
 
             Map map = new HashMap();
             map.put("result", result);
