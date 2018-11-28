@@ -34,21 +34,40 @@ public class App {
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(inputFile);
             doc.getDocumentElement().normalize();
-            System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+            //System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
             NodeList nList = doc.getElementsByTagName("ENTITY");
             System.out.println("----------------------------");
             for (int temp = 0; temp < nList.getLength(); temp++) {
                 Node nNode = nList.item(temp);
-                System.out.println("\nCurrent Element :" + nNode.getNodeName());
+                //System.out.println("\nCurrent Element :" + nNode.getNodeName());
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) nNode;
-                    if(eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent().equals(name)
+                    if(name != null && surname != null) {
+                        if(eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent().equals(name)
                         || eElement.getElementsByTagName("LASTNAME").item(0).getTextContent().equals(surname)) {
                             result += eElement.getAttribute("Id") + "\n";
                             result += eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent() + "\n";
                             result += eElement.getElementsByTagName("LASTNAME").item(0).getTextContent() + "\n";
                             result += "####################\n";
+                        }
+                    }else if(name != null && surname == null) {
+                        if(eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent().equals(name)) {
+                            result += eElement.getAttribute("Id") + "\n";
+                            result += eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent() + "\n";
+                            result += eElement.getElementsByTagName("LASTNAME").item(0).getTextContent() + "\n";
+                            result += "####################\n";
                     }
+                    }else if(name == null && surname != null) {
+                        if(eElement.getElementsByTagName("LASTNAME").item(0).getTextContent().equals(surname)) {
+                            result += eElement.getAttribute("Id") + "\n";
+                            result += eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent() + "\n";
+                            result += eElement.getElementsByTagName("LASTNAME").item(0).getTextContent() + "\n";
+                            result += "####################\n";
+                        }
+                    }else if(name == null && surname == null) {
+                        result = "You entered both textarea NULL";
+                    }
+                    
                 }
             }
          } catch (Exception e) {
