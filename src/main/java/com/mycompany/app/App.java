@@ -13,16 +13,18 @@ import spark.ModelAndView;
 import spark.template.mustache.MustacheTemplateEngine;
 
 public class App {
-    public static boolean search(ArrayList<Integer> array, int e) {
+    public static ArrayList<String> search(String name,String surname) {
         System.out.println("inside search");
-        if (array == null)
-            return false;
-
-        for (int elt : array) {
-            if (elt == e)
-                return true;
+        java.util.Scanner xmlreader = null;
+        try {
+            xmlreader = new java.util.Scanner("EEAS.xml");
+        }catch (Exception e) {
+            System.out.println("File Cannot Read!");
         }
-        return false;
+        while(xmlreader.hasNextLine()) {
+            System.out.println(xmlreader.nextLine());
+        }
+        return null;
     }
 
     public static void main(String[] args) {
@@ -34,26 +36,14 @@ public class App {
             // System.out.println(req.queryParams("input1"));
             // System.out.println(req.queryParams("input2"));
 
-            String input1 = req.queryParams("input1");
-            java.util.Scanner sc1 = new java.util.Scanner(input1);
-            sc1.useDelimiter("[;\r\n]+");
-            java.util.ArrayList<Integer> inputList = new java.util.ArrayList<>();
-            while (sc1.hasNext()) {
-                int value = Integer.parseInt(sc1.next().replaceAll("\\s", ""));
-                inputList.add(value);
-            }
-            System.out.println(inputList);
+
+            String input1 = req.queryParams("input1").replaceAll("\\s", "");
+            System.out.println(input1);
 
             String input2 = req.queryParams("input2").replaceAll("\\s", "");
-            int input2AsInt = Integer.parseInt(input2);
-            
-            java.util.Scanner xmlreader = null;
-            try {
-                xmlreader = new java.util.Scanner("EEASs.xml");
-            }catch (Exception e) {
-                System.out.println("File Cannot Read!");
-            }
-            boolean result = App.search(inputList, input2AsInt);
+            System.out.println(input1);
+
+            ArrayList<String> result = App.search(input1,input2);
 
             Map map = new HashMap();
             map.put("result", result);
