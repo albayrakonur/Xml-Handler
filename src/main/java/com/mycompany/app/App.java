@@ -37,6 +37,16 @@ public class App {
                
                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) nNode;
+                    result.add(eElement.getAttribute("Id"));
+                    result.add(eElement
+                    .getElementsByTagName("FIRSTNAME")
+                    .item(0)
+                    .getTextContent());
+                    result.add(eElement
+                    .getElementsByTagName("LASTNAME")
+                    .item(0)
+                    .getTextContent());
+
                     System.out.println("Entity ID: " 
                      + eElement.getAttribute("Id"));
                     System.out.println("First Name : " 
