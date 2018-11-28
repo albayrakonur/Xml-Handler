@@ -7,6 +7,7 @@ import static spark.Spark.post;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 import spark.ModelAndView;
 import spark.template.mustache.MustacheTemplateEngine;
@@ -45,7 +46,13 @@ public class App {
 
             String input2 = req.queryParams("input2").replaceAll("\\s", "");
             int input2AsInt = Integer.parseInt(input2);
-
+            
+            java.util.Scanner xmlreader = null;
+            try {
+                xmlreader = new java.util.Scanner("EEAS.xml");
+            }catch (Exception e) {
+                System.out.println("File Cannot Read!");
+            }
             boolean result = App.search(inputList, input2AsInt);
 
             Map map = new HashMap();
