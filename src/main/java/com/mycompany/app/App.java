@@ -48,21 +48,21 @@ public class App {
                             result += eElement.getAttribute("Id") + "\n";
                             result += eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent() + "\n";
                             result += eElement.getElementsByTagName("LASTNAME").item(0).getTextContent() + "\n";
-                            result += "|||\n";
+                            result += "\n";
                         }
                     }else if(name != null && surname == null) {
                         if(eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent().equals(name)) {
                             result += eElement.getAttribute("Id") + "\n";
                             result += eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent() + "\n";
                             result += eElement.getElementsByTagName("LASTNAME").item(0).getTextContent() + "\n";
-                            result += "|||\n";
+                            result += "\n";
                     }
                     }else if(name == null && surname != null) {
                         if(eElement.getElementsByTagName("LASTNAME").item(0).getTextContent().equals(surname)) {
                             result += eElement.getAttribute("Id") + "\n";
                             result += eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent() + "\n";
                             result += eElement.getElementsByTagName("LASTNAME").item(0).getTextContent() + "\n";
-                            result += "|||\n";
+                            result += "\n";
                         }
                     }else if(name == null && surname == null) {
                         result = "You entered both textarea NULL";
@@ -95,13 +95,7 @@ public class App {
             String result = App.search(input1,input2);
 
             Map map = new HashMap();
-
-            String[] resultArray = result.split("|||");
-            ArrayList<String> list = new ArrayList<>();
-            for(int i = 0; i < resultArray.length;i++) {
-                String s = resultArray[i];
-                map.put(i, s);
-            }
+            map.put("result", result);
             return new ModelAndView(map, "compute.mustache");
         }, new MustacheTemplateEngine());
 
