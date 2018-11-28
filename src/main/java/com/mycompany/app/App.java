@@ -50,13 +50,13 @@ public class App {
 
             Map map = new HashMap();
             map.put("result", result);
-            return new ModelAndView(map, "search.mustache");
+            return new ModelAndView(map, "compute.mustache");
         }, new MustacheTemplateEngine());
 
         get("/search", (rq, rs) -> {
             Map map = new HashMap();
             map.put("result", "not computed yet!");
-            return new ModelAndView(map, "search.mustache");
+            return new ModelAndView(map, "compute.mustache");
         }, new MustacheTemplateEngine());
     }
 
