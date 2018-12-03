@@ -66,7 +66,7 @@ public class App {
                             result += "------------------\n";
                         }
                     }else if(name == null && surname == null) {
-                        result = "You entered both textarea NULL";
+                        result = "You entered both textarea";
                     }
                     
                 }
@@ -82,7 +82,7 @@ public class App {
 
         get("/", (req, res) -> "Hello, World");
 
-        post("/compute", (req, res) -> {
+        post("/search", (req, res) -> {
             // System.out.println(req.queryParams("input1"));
             // System.out.println(req.queryParams("input2"));
 
@@ -94,18 +94,16 @@ public class App {
             System.out.println(input2);
 
             String result = App.search(input1,input2);
-            String[] arr = result.split("------------------\n");
-            System.out.println(Arrays.toString(arr));
-
+            
             Map map = new HashMap();
             map.put("result", result);
-            return new ModelAndView(map, "compute.mustache");
+            return new ModelAndView(map, "search.mustache");
         }, new MustacheTemplateEngine());
 
-        get("/compute", (rq, rs) -> {
+        get("/search", (rq, rs) -> {
             Map map = new HashMap();
             map.put("result", "");
-            return new ModelAndView(map, "compute.mustache");
+            return new ModelAndView(map, "search.mustache");
         }, new MustacheTemplateEngine());
     }
 
