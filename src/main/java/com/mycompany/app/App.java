@@ -4,11 +4,9 @@ import static spark.Spark.get;
 import static spark.Spark.port;
 import static spark.Spark.post;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.io.File;
+import java.io.*;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
 import org.w3c.dom.Document;
@@ -20,8 +18,7 @@ import spark.ModelAndView;
 import spark.template.mustache.MustacheTemplateEngine;
 
 public class App {
-    public static String search(String name,String surname) {
-        System.out.println("inside search");
+    public static String search(String name,String surname){
         String result = "";
         if(name.equals("")) {
             name = null;
@@ -46,21 +43,22 @@ public class App {
                     if(name != null && surname != null) {
                         if(eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent().equals(name)
                         && eElement.getElementsByTagName("LASTNAME").item(0).getTextContent().equals(surname)) {
-                            result += eElement.getAttribute("Id") + "\n";
+                            result += eElement.getAttribute("Id") + "\n"; 
                             result += eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent() + "\n";
                             result += eElement.getElementsByTagName("LASTNAME").item(0).getTextContent() + "\n";
                             result += "------------------\n";
+                        
                         }
                     }else if(name != null && surname == null) {
                         if(eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent().equals(name)) {
-                            result += eElement.getAttribute("Id") + "\n";
+                            result += eElement.getAttribute("Id") + "\n"; 
                             result += eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent() + "\n";
                             result += eElement.getElementsByTagName("LASTNAME").item(0).getTextContent() + "\n";
                             result += "------------------\n";
                     }
                     }else if(name == null && surname != null) {
                         if(eElement.getElementsByTagName("LASTNAME").item(0).getTextContent().equals(surname)) {
-                            result += eElement.getAttribute("Id") + "\n";
+                            result += eElement.getAttribute("Id") + "\n"; 
                             result += eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent() + "\n";
                             result += eElement.getElementsByTagName("LASTNAME").item(0).getTextContent() + "\n";
                             result += "------------------\n";
