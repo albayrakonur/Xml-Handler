@@ -41,24 +41,24 @@ public class App {
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) nNode;
                     if(name != null && surname != null) {
-                        if(eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent().equals(name)
-                        && eElement.getElementsByTagName("LASTNAME").item(0).getTextContent().equals(surname)) {
-                            result += eElement.getAttribute("Id") + "\n"; 
+                        if(eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent().equalsIgnoreCase(name)
+                        && eElement.getElementsByTagName("LASTNAME").item(0).getTextContent().equalsIgnoreCase(surname)) {
+                            result += eElement.getAttribute("Entity_id") + "\n"; 
                             result += eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent() + "\n";
                             result += eElement.getElementsByTagName("LASTNAME").item(0).getTextContent() + "\n";
                             result += "__________________\n";
                         
                         }
                     }else if(name != null && surname == null) {
-                        if(eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent().equals(name)) {
-                            result += eElement.getAttribute("Id") + "\n"; 
+                        if(eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent().equalsIgnoreCase(name)) {
+                            result += eElement.getAttribute("Entity_id") + "\n"; 
                             result += eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent() + "\n";
                             result += eElement.getElementsByTagName("LASTNAME").item(0).getTextContent() + "\n";
                             result += "__________________\n";
                     }
                     }else if(name == null && surname != null) {
-                        if(eElement.getElementsByTagName("LASTNAME").item(0).getTextContent().equals(surname)) {
-                            result += eElement.getAttribute("Id") + "\n"; 
+                        if(eElement.getElementsByTagName("LASTNAME").item(0).getTextContent().equalsIgnoreCase(surname)) {
+                            result += eElement.getAttribute("Entity_id") + "\n"; 
                             result += eElement.getElementsByTagName("FIRSTNAME").item(0).getTextContent() + "\n";
                             result += eElement.getElementsByTagName("LASTNAME").item(0).getTextContent() + "\n";
                             result += "__________________\n";
